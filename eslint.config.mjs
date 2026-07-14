@@ -1,3 +1,4 @@
+import { defineConfig, globalIgnores } from 'eslint/config'
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -7,10 +8,10 @@ import prettierConfig from 'eslint-config-prettier'
 
 const IGNORED_PATHS = ['dist', 'dev-dist', 'coverage', 'playwright-report', 'test-results']
 
-export default tseslint.config(
-  { ignores: IGNORED_PATHS },
+export default defineConfig(
+  globalIgnores(IGNORED_PATHS),
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2023,
